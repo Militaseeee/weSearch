@@ -18,6 +18,7 @@ input {
     border: none;
     border-radius: 7px;
     outline: none;
+    height: 1.5rem;
     margin-top: 17px;
     position: relative;
     background-color: #D9D9D9;
@@ -40,6 +41,7 @@ button {
     padding: 10px;
     background-color: #FFA630;
     border: none;
+    height: 2.7rem;
     border-radius: 7px;
     color: #ffffff;
     cursor: pointer;
