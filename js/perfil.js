@@ -13,6 +13,10 @@ xhr.onload = function () {
             document.getElementById('id').querySelector('p').textContent = data.id;
             document.getElementById('tel').querySelector('p').textContent = data.telefono;
             document.getElementById('identificacion').querySelector('p').textContent = data.identificacion;
+
+            // Obtener la imagen de perfil y establecer su src
+            var fotoPerfil = document.getElementById('foto_perfil');
+            fotoPerfil.src = data.foto_perfil;
         }
     }
 };

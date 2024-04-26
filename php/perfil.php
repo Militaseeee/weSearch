@@ -15,6 +15,10 @@ if (isset($_SESSION['email'])) {
     if ($result->num_rows == 1) {
         // Obtener los datos del estudiante
         $row = $result->fetch_assoc();
+
+        // Agregar la ruta de la imagen de perfil a los datos
+        $row['foto_perfil'] = $row['foto'];
+
         header('Content-Type: application/json'); // Establecer el tipo de contenido como JSON
         echo json_encode($row);
     } else {
