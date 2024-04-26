@@ -1,18 +1,30 @@
 <?php
-//require_once 'conex.php';
+session_start(); // Iniciar sesión
 
-// Primero, verificar si hay una sesión iniciada
-//session_start();
-//if (!isset($_SESSION['usuario_id'])) {
-    // Si no hay sesión iniciada, redirigir al usuario al formulario de inicio de sesión
-    //header("Location: login.html");
-    //exit();
-//}
+include '../php/conex.php';
 
-// Consulta para obtener los datos del usuario
-//$query = "SELECT * FROM usuarios WHERE email = :email";
-//$stmt = $conn->prepare($query);
-//$stmt->bindParam(':email', $_SESSION['email']);
-//$stmt->execute();
-//$usuario = $stmt->fetch(PDO::FETCH_ASSOC);
+// Verificar si el usuario ha iniciado sesión
+if (isset($_SESSION['email'])) {
+    // Obtener el correo electrónico del usuario
+    $email = $_SESSION['email'];
+
+    // Consulta SQL para obtener los datos del estudiante
+    $sql = "SELECT * FROM perfilEstudiante WHERE correo = '$email'";
+    $result = $conex->query($sql);
+
+    if ($result->num_rows == 1) {
+        // Obtener los datos del estudiante
+        $row = $result->fetch_assoc();
+        header('Content-Type: application/json'); // Establecer el tipo de contenido como JSON
+        echo json_encode($row);
+    } else {
+        // No se encontró el estudiante
+        header('Content-Type: application/json'); // Establecer el tipo de contenido como JSON
+        echo json_encode(array('error' => 'No se encontró el estudiante.'));
+    }
+} else {
+    // Si el usuario no ha iniciado sesión, devolver un error
+    header('Content-Type: application/json'); // Establecer el tipo de contenido como JSON
+    echo json_encode(array('error' => 'Usuario no autenticado.'));
+}
 ?>
