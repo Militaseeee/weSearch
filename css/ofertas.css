@@ -41,23 +41,21 @@
 }
 
 .icono {
-    width: 10vw;
+    width: 90px;
     margin-right: 10px;
     border-radius: 50%; 
     border: 1px solid #000000;
 }
 
-@media screen and (max-width: 382px) {
+@media screen and (max-width: 452px) {
     .icono {
-        width: 20vw; /* Cambia el tamaño de la imagen para pantallas más pequeñas */
+        width: 80px; /* Cambia el tamaño de la imagen para pantallas más pequeñas */
     }
+
+    .card_ofertas {        
+        padding: 25px;}
 }
 
-@media screen and (min-width: 900px) {
-    .icono {
-        width: 10vw; /* Cambia el tamaño de la imagen para pantallas más pequeñas */
-    }
-}
 
 .text {
     display: flex;
@@ -103,21 +101,30 @@
     margin: 0;
 }
 
+li {
+    margin-bottom: 0.5rem;
+}
+
 .info h3 {
     margin-top: 30px;
 }
 
 .actions {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     margin-bottom: 20%;
+
 }
 
 .actions button {
-    padding: 30px 33px;
+    padding: 13px 16px;
     border: none;
     border-radius: 50%;
     cursor: pointer;
+
+    & img {
+        width: 50px;
+    }
 }
 
 .close-btn {
