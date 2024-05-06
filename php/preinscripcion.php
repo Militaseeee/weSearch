@@ -24,13 +24,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($stmt->execute()) {
         // Actualizar el campo 'completado' a '1'
-        $sql_update = "UPDATE preinscripcion SET completado = 1 WHERE id = ?";
+        $sql_update = "UPDATE perfilestudiante SET completado = 1 WHERE id = ?";
         $stmt_update = $conex->prepare($sql_update);
         $stmt_update->bind_param("s", $id);
         $stmt_update->execute();
         
         //siguiente paso del proceso
-        header("Location: ../php/taller.php");
+        header("Location: ../html/taller.html");
         exit;
     } else {
         echo "Error: " . $conex->error;
