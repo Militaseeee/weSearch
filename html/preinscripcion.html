@@ -21,9 +21,9 @@
                     <label for="completado">Autorización política de tratamientos de datos personales.</label>
                 </div>
             </div>
-    
-            <input type="text" placeholder="Nombre completo" name="nombreEstudiante"/>
-            
+
+            <input type="text" placeholder="Nombre completo" name="nombreEstudiante" />
+
             <div class="document">
                 <select name="tipoIdentificacion" required>
                     <option value="" selected disabled hidden>Tipo de documento</option>
@@ -31,11 +31,11 @@
                     <option value="TI">Tarjeta de identidad</option>
                     <option value="PA">Pasaporte</option>
                 </select>
-                <input type="text" placeholder="N° Documento" name="identificacion" required/>
+                <input type="text" placeholder="N° Documento" name="identificacion" required />
             </div>
-    
-            <input type="tel" placeholder="Celular" name="telefono" required/>
-            <input type="number" placeholder="ID Institucional" name="id" required/>
+
+            <input type="tel" placeholder="Celular" name="telefono" required />
+            <input type="number" placeholder="ID Institucional" name="id" required />
             <select name="sede" required>
                 <option value="" selected disabled hidden>Sede</option>
                 <option value="Antioquia - Chocó">Antioquia - Chocó</option>
@@ -52,15 +52,16 @@
             <select name="carrera" required>
                 <option value="" selected disabled hidden>Programa academico</option>
                 <option value="Administración de Empresas">Administración de Empresas</option>
-                <option value="Administración en Seguridad y Salud en el Trabajo">Administración en Seguridad y Salud en el Trabajo</option>
+                <option value="Administración en Seguridad y Salud en el Trabajo">Administración en Seguridad y Salud en
+                    el Trabajo</option>
                 <option value="Comunicación Social y Periodismo">Comunicación Social y Periodismo</option>
                 <option value="Psicología">Psicología</option>
                 <option value="Trabajo Social">Trabajo Social</option>
                 <option value="Ingeniería de Software">Ingeniería de Software</option>
-            </select>        
-            <input type="text" placeholder="Periodo académico" name="periodoAcademico" required/>
-            <input type="text" placeholder="Créditos aprobados" name="creditosAprobados" required/>
-    
+            </select>
+            <input type="text" placeholder="Periodo académico" name="periodoAcademico" required />
+            <input type="text" placeholder="Créditos aprobados" name="creditosAprobados" required />
+
             <select name="estadoPractica" required>
                 <option value="" selected disabled hidden>Estado de Práctica en Responsabilidad Social</option>
                 <option value="1">Completada</option>
@@ -71,36 +72,38 @@
                 <option value="1">Si</option>
                 <option value="0">No</option>
             </select>
-    
+
             <div class="boton_atras_sig">
-                <button type="button">CANCELAR</button>
+                <button type="button" id="btnCancelar">CANCELAR</button>
                 <button type="submit">PREINSCRIBIR</button>
             </div>
         </form>
 
     </div>
 
-    <!-- Navbar -->
-    <nav>
+     <!-- Navbar -->
+     <nav>
         <div class="nav_list">
-            <a href="" class="nav_link">
+            <a href="#" onclick="verificarFase()" class="nav_link">
                 <img src="https://img.icons8.com/ios-filled/100/FFFFFF/process.png" alt="process" />
                 <span class="nav_text">Proceso</span>
             </a>
-            <a href="" class="nav_link">
-                <img src="https://img.icons8.com/ios-filled/100/FFFFFF/briefcase.png" alt="briefcase" />
+            <a href="#" onclick="verificarOfertas()" class="nav_link">
+                <img src="https://img.icons8.com/ios-filled/100/FFFFFF/briefcase.png" alt="briefcase" id="ofertasB"/>
                 <span class="nav_text">Ofertas</span>
             </a>
-            <a href="" class="nav_link">
+            <a href="#" onclick="verificarFavoritos()" class="nav_link">
                 <img src="https://img.icons8.com/ios-filled/100/FFFFFF/like--v1.png" alt="like--v1" />
                 <span class="nav_text">Favoritos</span>
             </a>
-            <a href="" class="nav_link">
+            <a href="ajustes.html" class="nav_link">
                 <img src="https://img.icons8.com/ios-filled/100/FFFFFF/settings.png" alt="settings" />
                 <span class="nav_text">Ajustes</span>
             </a>
         </div>
     </nav>
+    <script src="../js/navbar.js"></script>
+    <script src="../js/proceso.js"></script>
 </body>
 
 </html>
