@@ -19,6 +19,10 @@ if (isset($_SESSION['email'])) {
         // Agregar la ruta de la imagen de perfil a los datos
         $row['foto_perfil'] = $row['foto'];
 
+        // Agregar el ID del perfil del estudiante a los datos
+        $row['id_perfil'] = $row['id']; // Suponiendo que el ID del perfil se llama 'id'
+
+
         header('Content-Type: application/json'); // Establecer el tipo de contenido como JSON
         echo json_encode($row);
     } else {
