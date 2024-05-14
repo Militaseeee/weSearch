@@ -23,6 +23,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 // Si la inserción fue exitosa, establecer un mensaje de éxito en la respuesta
                 $response['success'] = true;
                 $response['message'] = 'Oferta agregada a favoritos correctamente.';
+                // Registrar la oferta como favorita en la sesión del usuario
+                $_SESSION['favoritos'][] = $id_oferta;
             } else {
                 // Si hubo un error en la inserción, establecer un mensaje de error en la respuesta
                 $response['success'] = false;

@@ -18,7 +18,7 @@ function verificarFase() {
                     duration: 5000, // Duración del toast en milisegundos (5 segundos en este caso)
                     gravity: 'top', // Posición del toast (arriba)
                     position: 'center', // Posición horizontal del toast (centrado)
-                    backgroundColor: 'radial-gradient(circle, rgba(34,193,195,1) 0%, rgba(45,253,51,1) 51%)',
+                    backgroundColor: '#17A589',
                 }).showToast();
             }
         } else {

@@ -1,5 +1,4 @@
 <?php
-
 session_start(); // Iniciar sesión
 include 'conex.php';
 
@@ -23,10 +22,14 @@ function obtenerOfertaAleatoria() {
 
         // Agregar la URL de la imagen a los datos de la oferta
         $oferta['img'] = $rutaImagen;
-
-        return $oferta;
+        
+        //return $ofertas;
+        // Devolver la oferta como JSON
+        echo json_encode($oferta);
     } else {
-        return false;
+        //return false;
+        // Si no se encontraron ofertas, devolver un mensaje de error como JSON
+        echo json_encode(array("error" => "No se encontraron ofertas"));
     }
 }
 
@@ -86,21 +89,4 @@ if (isset($_GET['obtener_oferta'])) {
     }
     exit(); // Terminar el script después de manejar la solicitud AJAX
 }
-// Manejar la solicitud AJAX para obtener una oferta aleatoria filtrada por la carrera del estudiante
-//if (isset($_GET['obtener_oferta'])) {
-    // Aquí debes obtener la carrera del estudiante desde la sesión o algún otro lugar
-    // Por ejemplo, si la carrera del estudiante está almacenada en una sesión llamada "carrera_estudiante"
-    //if (isset($_SESSION['carrera_estudiante'])) {
-        //$carreraEstudiante = $_SESSION['carrera_estudiante'];
-        //$oferta = obtenerOfertasFiltradasPorCarrera($carreraEstudiante);
-        //if ($oferta) {
-            //echo json_encode($oferta);
-        //} else {
-            //echo json_encode(array("error" => "No se encontraron ofertas para la carrera del estudiante"));
-        //}
-    //} else {
-        //echo json_encode(array("error" => "No se ha proporcionado la carrera del estudiante"));
-    //}
-    //exit(); // Terminar el script después de manejar la solicitud AJAX
-//}
 ?>
