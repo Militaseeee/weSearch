@@ -15,6 +15,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($result->num_rows == 1) {
         // Usuario autenticado correctamente
         $_SESSION['email'] = $email; // Guardar el email en la sesión
+
+        // Obtener la carrera del estudiante de la base de datos
+        $row = $result->fetch_assoc();
+        $carrera_del_estudiante = $row['carrera']; // Suponiendo que la columna se llame 'carrera'
+
+        // Debug: Verificar la carrera del estudiante obtenida
+        var_dump($carrera_del_estudiante);
+
+        // Guardar la carrera del estudiante en la sesión
+        $_SESSION['carrera_estudiante'] = $carrera_del_estudiante;
+
+        $_SESSION['id_perfil'] = $row['id']; // Suponiendo que el ID del perfil se encuentra en la columna 'id'
+
+
         header('Location: ../html/perfil.html'); // Redireccionar al perfil
         exit;
     } else {
