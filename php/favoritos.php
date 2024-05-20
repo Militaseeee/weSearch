@@ -15,20 +15,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Verificar si el usuario está autenticado y tiene un perfil
         if (isset($_SESSION['id_perfil'])) {
             // El usuario está autenticado, proceder con la lógica para agregar la oferta a favoritos
-
-            // Realizar la inserción en la base de datos
             $id_perfil = $_SESSION['id_perfil'];
-            $query = "INSERT INTO favoritos (id_perfil, id_oferta) VALUES ('$id_perfil', '$id_oferta')";
-            if (mysqli_query($conex, $query)) {
-                // Si la inserción fue exitosa, establecer un mensaje de éxito en la respuesta
-                $response['success'] = true;
-                $response['message'] = 'Oferta agregada a favoritos correctamente.';
-                // Registrar la oferta como favorita en la sesión del usuario
-                $_SESSION['favoritos'][] = $id_oferta;
-            } else {
-                // Si hubo un error en la inserción, establecer un mensaje de error en la respuesta
+
+            // Verificar si la oferta ya está en favoritos para el perfil actual
+            $check_query = "SELECT * FROM favoritos WHERE id_perfil = '$id_perfil' AND id_oferta = '$id_oferta'";
+            $check_result = mysqli_query($conex, $check_query);
+
+            if (mysqli_num_rows($check_result) > 0) {
+                // Si la oferta ya está en favoritos, devolver un mensaje de error
                 $response['success'] = false;
-                $response['error'] = 'Error al agregar la oferta a favoritos: ' . mysqli_error($conex);
+                $response['error'] = 'La oferta ya está en favoritos.';
+            } else {
+                // Realizar la inserción en la base de datos
+                $insert_query = "INSERT INTO favoritos (id_perfil, id_oferta) VALUES ('$id_perfil', '$id_oferta')";
+                if (mysqli_query($conex, $insert_query)) {
+                    // Si la inserción fue exitosa, establecer un mensaje de éxito en la respuesta
+                    $response['success'] = true;
+                    $response['message'] = 'Oferta agregada a favoritos correctamente.';
+                    // Registrar la oferta como favorita en la sesión del usuario
+                    $_SESSION['favoritos'][] = $id_oferta;
+                } else {
+                    // Si hubo un error en la inserción, establecer un mensaje de error en la respuesta
+                    $response['success'] = false;
+                    $response['error'] = 'Error al agregar la oferta a favoritos: ' . mysqli_error($conex);
+                }
             }
         } else {
             // Si el usuario no está autenticado, establecer un mensaje de error en la respuesta

@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", function() {
     
     // Verificar si no hay más ofertas disponibles después de intentar obtener una oferta aleatoria
     function verificarOfertasDisponibles() {
-        if (ofertasRechazadas.length + ofertasFavoritas.length === 2) {
+        if (ofertasRechazadas.length + ofertasFavoritas.length >=4) {
             mostrarToastNoOfertasDisponibles(); // Mostrar el Toastify si no hay más ofertas disponibles
             ocultarContenedorOfertas(); // Ocultar el contenedor de ofertas cuando no hay más disponibles
         }
@@ -126,6 +126,13 @@ document.addEventListener("DOMContentLoaded", function() {
                         try {
                             var data = JSON.parse(xhr.responseText);
                             if (data.success) {
+                                Toastify({
+                                    text: data.message,
+                                    duration: 2000,
+                                    gravity: 'top',
+                                    position: 'center',
+                                    backgroundColor: '#28B463',
+                                }).showToast();
                                 console.log(data.message); // Muestra el mensaje en la consola
                                 // Aquí puedes realizar cualquier acción adicional si la operación fue exitosa
 
@@ -144,6 +151,13 @@ document.addEventListener("DOMContentLoaded", function() {
                             } else {
                                 console.error(data.error); // Muestra el mensaje de error en la consola
                                 // Aquí puedes manejar el error de alguna manera apropiada
+                                Toastify({
+                                    text: data.error,
+                                    duration: 2000,
+                                    gravity: 'top',
+                                    position: 'center',
+                                    backgroundColor: '#ff0000',
+                                }).showToast();
                             }
                         } catch (error) {
                             console.error("Error al analizar la respuesta JSON:", error);
@@ -157,12 +171,5 @@ document.addEventListener("DOMContentLoaded", function() {
         } else {
             console.error("ID de la oferta no definido.");
         }
-        Toastify({
-            text: 'Se agrega la oferta en favoritos',
-            duration: 2000, // Duración del toast en milisegundos (2 segundos)
-            gravity: 'top', // Posición del toast (arriba)
-            position: 'center', // Posición horizontal del toast (centrado)
-            backgroundColor: '#17A589', // Color de fondo del toast (rojo)
-        }).showToast();
     };
 });
