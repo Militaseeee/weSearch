@@ -18,7 +18,7 @@
 }
 
 
-.favorite-item img {
+.favorite-item .icono {
     width: 100px;       
     border-radius: 50%;
     border-width: 2px;
