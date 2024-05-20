@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", function() {
     
     // Verificar si no hay más ofertas disponibles después de intentar obtener una oferta aleatoria
     function verificarOfertasDisponibles() {
-        if (ofertasRechazadas.length + ofertasFavoritas.length === 2) {
+        if (ofertasRechazadas.length + ofertasFavoritas.length >=4) {
             mostrarToastNoOfertasDisponibles(); // Mostrar el Toastify si no hay más ofertas disponibles
             ocultarContenedorOfertas(); // Ocultar el contenedor de ofertas cuando no hay más disponibles
         }
